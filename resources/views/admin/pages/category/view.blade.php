@@ -54,8 +54,9 @@
                                         <th>Name</th>
                                         <th>Slug</th>
                                         <th>Title</th>
+                                        <th>Menu</th>
                                         <th>Status</th>
-                                        <th>Date</th>
+                                        {{-- <th>Date</th> --}}
                                         <th style="width: 75px;">Action</th>
                                     </tr>
                                 </thead>
@@ -72,13 +73,20 @@
                                         <td>{{ $item->slug }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>
+                                            @if ($item->menu)
+                                            <span class="badge badge-soft-success">yes</span>
+                                            @else
+                                            <span class="badge badge-soft-danger">no</span>    
+                                            @endif
+                                        </td>
+                                        <td>
                                             @if ($item->status == 'active')
                                             <span class="badge badge-soft-success">Active</span>
                                             @else
                                             <span class="badge badge-soft-danger">Inactive</span>    
                                             @endif
                                         </td>
-                                        <td>{{ date('d-m-y, h:i A',strtotime($item->created_at)) }}</td>
+                                        {{-- <td>{{ date('d-m-y, h:i A',strtotime($item->created_at)) }}</td> --}}
 
                                         <td>
                                             <a href="{{ route('editcategory',$item->id) }}" class="action-icon"> <i class="mdi mdi-square-edit-outline fs-3"></i></a>

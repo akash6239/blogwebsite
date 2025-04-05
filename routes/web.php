@@ -14,6 +14,7 @@ Route::get('/about',[HomeController::class,'aboutus'])->name('aboutus');
 Route::get('/teams',[HomeController::class,'teams'])->name('teams');
 Route::get('/gallery',[HomeController::class,'gallery'])->name('gallery');    
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');    
+Route::get('/category/blog/{slug}',[HomeController::class,'categoryblog'])->name('categoryblog');    
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');    
 Route::get('/contact', function () {
     return view('webapp.pages.contact');

@@ -52,7 +52,7 @@ class TagController extends Controller
     {
         // return $request->all();
         $validator = Validator::make($request->all(), [
-            'name'            => 'required|unique:tags,name'.$id,
+            'name'            => 'required|unique:tags,name,'.$id,
             'status'           => 'required|in:active,inactive',
         ]);
             $tag = Tag::findOrFail($id);

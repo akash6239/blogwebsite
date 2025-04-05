@@ -270,7 +270,7 @@
           <h2 class="mb-4">Tag Cloud</h2>
           <div class="d-flex flex-wrap m-n1">
            @foreach ($tags as $item)
-                <a href="" class="btn btn-outline-primary m-1">{{ $item->name }}</a>
+                <a href="{{ route('blog',['search' => $item->name]) }}" class="btn btn-outline-primary m-1">{{ $item->name }}</a>
            @endforeach
           </div>
         </div>

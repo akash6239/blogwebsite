@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->Text('meta_description')->nullable();
+            $table->string('menu')->default(0);
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });

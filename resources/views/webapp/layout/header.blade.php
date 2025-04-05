@@ -1,3 +1,9 @@
+@php
+    use App\Models\Category;
+    $getcategoryheader = Category::orderBy('id', 'DESC')
+                        ->where('menu',1)
+                        ->where('status', 'active')->get();
+@endphp
  <!-- Navbar Start -->
  <div class="container-fluid bg-light position-relative shadow">
   <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
@@ -11,9 +17,9 @@
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
           <div class="navbar-nav font-weight-bold mx-auto py-0">
               <a href="/" class="nav-item nav-link active">Home</a>
-              <a href="{{ route('aboutus') }}" class="nav-item nav-link">About</a>
-              <a href="{{ route('teams') }}" class="nav-item nav-link">Teams</a>
-              <a href="{{ route('gallery') }}" class="nav-item nav-link">Gallery</a>
+              @foreach ($getcategoryheader as $item)
+                  <a href="{{ route('categoryblog',$item->slug) }}" class="nav-item nav-link">{{ $item->name }}</a>
+              @endforeach
               <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
               {{-- <div class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -22,7 +28,6 @@
                       <a href="single.html" class="dropdown-item">Blog Detail</a>
                   </div>
               </div> --}}
-              <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
           </div>
           <div>
             <a href="{{ route('login') }}" class="btn btn-primary px-4">Login </a>

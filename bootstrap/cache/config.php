@@ -163,8 +163,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\framework/cache/data',
-        'lock_path' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\framework/cache/data',
+        'path' => 'E:\\html code\\New folder\\blog website\\storage\\framework/cache/data',
+        'lock_path' => 'E:\\html code\\New folder\\blog website\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -336,7 +336,7 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\app/private',
+        'root' => 'E:\\html code\\New folder\\blog website\\storage\\app/private',
         'serve' => true,
         'throw' => false,
         'report' => false,
@@ -344,7 +344,7 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\app/public',
+        'root' => 'E:\\html code\\New folder\\blog website\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -366,7 +366,7 @@
     ),
     'links' => 
     array (
-      'E:\\html code\\New folder\\blog website\\backend\\public\\storage' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\app/public',
+      'E:\\html code\\New folder\\blog website\\public\\storage' => 'E:\\html code\\New folder\\blog website\\storage\\app/public',
     ),
   ),
   'logging' => 
@@ -391,14 +391,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\logs/laravel.log',
+        'path' => 'E:\\html code\\New folder\\blog website\\storage\\logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\logs/laravel.log',
+        'path' => 'E:\\html code\\New folder\\blog website\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -463,7 +463,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\logs/laravel.log',
+        'path' => 'E:\\html code\\New folder\\blog website\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -539,7 +539,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'E:\\html code\\New folder\\blog website\\backend\\resources\\views/vendor/mail',
+        0 => 'E:\\html code\\New folder\\blog website\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -658,7 +658,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\framework/sessions',
+    'files' => 'E:\\html code\\New folder\\blog website\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -784,9 +784,9 @@
   array (
     'paths' => 
     array (
-      0 => 'E:\\html code\\New folder\\blog website\\backend\\resources\\views',
+      0 => 'E:\\html code\\New folder\\blog website\\resources\\views',
     ),
-    'compiled' => 'E:\\html code\\New folder\\blog website\\backend\\storage\\framework\\views',
+    'compiled' => 'E:\\html code\\New folder\\blog website\\storage\\framework\\views',
   ),
   'tinker' => 
   array (

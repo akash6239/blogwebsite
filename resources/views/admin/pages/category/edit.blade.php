@@ -47,7 +47,18 @@
                                 <input type="text" name="title" id="title" class="form-control" placeholder="title" value="{{ old('title',$category->title) }}">
                                 @error('title')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="col-md-6 mb-3">
+                                <label class="mb-2">Menu <span class="text-danger">*</span></label>
+                                <br/>
+                                <div class="d-flex flex-wrap">
+                                    <select name="menu" class="form-select">
+                                        <option value="1" {{ old('menu',$category->menu) == '1' ? 'selected' : '' }}>Yes</option>
+                                        <option value="0" {{ old('menu',$category->menu) == '0' ? 'selected' : '' }}>No</option>
+                                    </select>
+                                </div>
+                                @error('menu')<p class="text-danger">{{ $message }}</p>@enderror
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-2">Status <span class="text-danger">*</span></label>
                                 <br/>
                                 <div class="d-flex flex-wrap">

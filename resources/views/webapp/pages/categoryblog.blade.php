@@ -15,11 +15,7 @@
       <p class="m-0"><a class="text-white" href="/">Home</a></p>
       <p class="m-0 px-2">/</p>
       <p class="m-0">
-          @if (request()->has('search') && !empty(request()->search))
-              Search Results
-          @else
               Blog
-          @endif
       </p>
   </div>
     </div>
@@ -28,23 +24,8 @@
  <!-- Blog Start -->
  <div class="container-fluid pt-5">
     <div class="container">
-      <div class="text-center pb-2">
-        @if (request()->has('search') && !empty(request()->search))
-            <!-- Show this when there is a search query -->
-            <p class="section-title px-5">
-                <span class="px-2">Search Results</span>
-            </p>
-            <h1 class="mb-4">Showing Results for "{{ request()->search }}"</h1>
-        @else
-            <!-- Show this when there is no search query -->
-            <p class="section-title px-5">
-                <span class="px-2">Latest Blog</span>
-            </p>
-            <h1 class="mb-4">Latest Articles From Blog</h1>
-        @endif
-    </div>
       <div class="row pb-3">
-        @foreach ($posts as $item)
+        @foreach ($getcategorypost as $item)
         <div class="col-lg-4 mb-4">
             <div class="card border-0 shadow-sm mb-2">
               <img class="card-img-top mb-2" src="{{ asset($item->image) }}" alt="" />
@@ -79,7 +60,7 @@
             
         </div>
         <div class="col-lg-1">
-            {{ $posts->links() }} 
+            {{ $getcategorypost->links() }} 
         </div>
       </div>
       

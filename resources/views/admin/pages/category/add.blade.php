@@ -41,12 +41,26 @@
                                 <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug" value="{{ old('slug') }}">
                                 @error('slug')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
+
                             <div class="col-md-12 mb-3">
                                 <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
                                 <input type="text" name="title" id="title" class="form-control" placeholder="title" value="{{ old('title') }}">
                                 @error('title')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
-                            <div class="mb-3">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="mb-2">Menu <span class="text-danger">*</span></label>
+                                <br/>
+                                <div class="d-flex flex-wrap">
+                                    <select name="menu" class="form-select">
+                                        <option value="1" {{ old('menu') == '1' ? 'selected' : '' }}>Yes</option>
+                                        <option value="0" {{ old('menu') == '0' ? 'selected' : '' }}>No</option>
+                                    </select>
+                                </div>
+                                @error('menu')<p class="text-danger">{{ $message }}</p>@enderror
+                            </div>
+
+                            <div class="col-md-6 mb-3">
                                 <label class="mb-2">Status <span class="text-danger">*</span></label>
                                 <br/>
                                 <div class="d-flex flex-wrap">
@@ -61,6 +75,7 @@
                                 </div>
                                 @error('status')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
+
                             <div class="text-center mb-3">
                                 <a href="{{ route('viewcategory') }}"><button type="button" class="btn w-sm btn-danger waves-effect">Cancel</button></a>
                                 <button type="submit" class="btn w-sm btn-success waves-effect waves-light">Save</button>
