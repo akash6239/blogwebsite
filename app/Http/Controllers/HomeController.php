@@ -27,29 +27,34 @@ class HomeController extends Controller
     }
     public function blog()
     {
-        // Start the query builder for posts
+        // Initialize the query for posts
         $query = Post::orderBy('id', 'DESC')
             ->where('status', 'active')
             ->where('is_published', 'yes');
-    
-        // Check if the search query parameter exists and is not empty
+        
+        // Check if a search term exists
         if (request()->has('search') && !empty(request()->search)) {
             $searchTerm = request()->search;
-    
-            // Filter the posts based on the search term
-            $query->where('title', 'like', '%' . $searchTerm . '%')
-                //   ->orWhere('content', 'like', '%' . $searchTerm . '%')
-                  ->orWhereHas('tags', function ($q) use ($searchTerm) {
-                      $q->where('name', 'like', '%' . $searchTerm . '%');
-                  });
+            
+            // Sanitize the search term (just an extra precaution)
+            $searchTerm = trim($searchTerm);
+            
+            // Apply search to both title and tags
+            $query->where(function($q) use ($searchTerm) {
+                $q->where('title', 'like', '%' . $searchTerm . '%')
+                ->orWhereHas('tags', function ($query) use ($searchTerm) {
+                    $query->where('name', 'like', '%' . $searchTerm . '%');
+                });
+            });
         }
-    
-        // Paginate the results
+        
+        // Paginate the results, 30 posts per page
         $posts = $query->paginate(30);
-    
-        // Return the view with the filtered posts
+        
+        // Return the view with the posts
         return view('webapp.pages.blog', compact('posts'));
     }
+
 
     public function categoryblog($slug)
     {
@@ -60,9 +65,15 @@ class HomeController extends Controller
            })->orderBy('id', 'DESC')
             ->where('status', 'active')
             ->where('is_published', 'yes')->paginate(30);
-            // dd($getcategorypost);
+
+            if ($getcategorypost->isNotEmpty()) {
+                $firstPost = $getcategorypost->first();
+                $data['meta_title'] = $firstPost->meta_title;
+                $data['meta_keywords'] = $firstPost->meta_keywords;
+                $data['meta_description'] = $firstPost->meta_description;
+            }
     
-            return view('webapp.pages.categoryblog', compact('getcategorypost'));
+            return view('webapp.pages.categoryblog', compact('getcategorypost','data','getcategory'));
     }
     
 
@@ -80,6 +91,10 @@ class HomeController extends Controller
             ->where('is_published', 'yes')->first();
 
             if ($post) {
+                $data['meta_title'] = $post->meta_title;
+                $data['meta_keywords'] = $post->meta_keywords;
+                $data['meta_description'] = $post->meta_description;
+
                 $currentPostCategories = $post->categories->pluck('id')->toArray();
                 $getrecentpost = Post::where('status', 'active') 
                     ->where('is_published', 'yes')
@@ -101,7 +116,7 @@ class HomeController extends Controller
             
                 $tags = $post->tags()->where('status', 'active')->orderBy('id', 'DESC')->paginate(10);
             
-                return view('webapp.pages.blogdetail', compact('post', 'category', 'getrecentpost', 'tags'));
+                return view('webapp.pages.blogdetail', compact('post', 'category', 'getrecentpost', 'tags','data'));
             } else {
                 abort(404);
             }

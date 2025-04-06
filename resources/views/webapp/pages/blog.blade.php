@@ -1,4 +1,7 @@
 @extends('webapp.layout.app')
+@section('title','this is blog page')
+@section('meta_keywords','this is blog  keywords')
+@section('meta_description','sadh sagdvash  asdvagshgd ashdvgas')
 @section('content')
  <main>
      <!-- Header Start -->
@@ -57,7 +60,7 @@
                   <small class="mr-3"
                     ><i class="fa fa-folder text-primary"></i> 
                     @foreach ($item->categories as $item2)
-                        {{ $item2->name }},
+                       <a href="{{ route('categoryblog',$item2->name) }}"> {{ $item2->name }},</a>
                     @endforeach
                     </small
                   >

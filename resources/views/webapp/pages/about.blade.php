@@ -1,4 +1,7 @@
 @extends('webapp.layout.app')
+@section('title','this is aboutus page')
+@section('meta_keywords','this is about us keywords')
+@section('meta_description','sadh sagdvash  asdvagshgd ashdvgas')
 @section('content')
 
 <main>

@@ -9,7 +9,7 @@ use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/about',[HomeController::class,'aboutus'])->name('aboutus');
 Route::get('/teams',[HomeController::class,'teams'])->name('teams');
 Route::get('/gallery',[HomeController::class,'gallery'])->name('gallery');    

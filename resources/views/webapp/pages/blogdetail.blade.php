@@ -1,4 +1,7 @@
 @extends('webapp.layout.app')
+@section('title',$data['meta_title'])
+@section('meta_keywords',$data['meta_keywords'])
+@section('meta_description',$data['meta_description'])
 @section('content')
 
 <main>
@@ -10,9 +13,9 @@
     >
       <h3 class="display-3 font-weight-bold text-white">blog detail</h3>
       <div class="d-inline-flex text-white">
-        <p class="m-0"><a class="text-white" href="/">Home</a></p>
+        <p class="m-0"><a class="text-white" href="{{ route('home') }}">Home</a></p>
         <p class="m-0 px-2">/</p>
-        <p class="m-0">About Us</p>
+        <p class="m-0">{{ $post->title }}</p>
       </div>
     </div>
   </div>
@@ -31,7 +34,7 @@
             <p class="mr-3">
               <i class="fa fa-folder text-primary"></i>
               @foreach ($post->categories  as $item2)
-                {{ $item2->name }},
+                <a href="{{ route('categoryblog',$item2->name) }}">{{ $item2->name }},</a>
               @endforeach
             </p>
             <p class="mr-3"><i class="fa fa-comments text-primary"></i> 15</p>
@@ -71,7 +74,7 @@
                     <small class="mr-3"
                       ><i class="fa fa-folder text-primary"></i> 
                       @foreach ($item->categories as $item2)
-                          {{ $item2->name }}
+                        <a href="{{ route('categoryblog',$item2->name) }}">{{ $item2->name }},</a>
                       @endforeach
                       </small
                     >
@@ -226,7 +229,7 @@
           <ul class="list-group list-group-flush">
             @foreach ($category as $item)
             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                <a href="">{{ $item->name }}</a>
+                <a href="{{ route('categoryblog',$item->name) }}">{{ $item->name }}</a>
                 <span class="badge badge-primary badge-pill">{{ $item->posts()->count() }}</span>
               </li>
             @endforeach
@@ -252,7 +255,7 @@
                 <small class="mr-3"
                   ><i class="fa fa-folder text-primary"></i> 
                   @foreach ($item->categories as $item2)
-                      {{ $item2->name }}
+                    <a href="{{ route('categoryblog',$item2->name) }}">{{ $item2->name }},</a>
                   @endforeach
                   </small
                 >

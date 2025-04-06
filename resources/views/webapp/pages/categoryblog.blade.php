@@ -1,4 +1,7 @@
 @extends('webapp.layout.app')
+@section('title',$data['meta_title'])
+@section('meta_keywords',$data['meta_keywords'])
+@section('meta_description',$data['meta_description'])
 @section('content')
  <main>
      <!-- Header Start -->
@@ -7,16 +10,12 @@
       class="d-flex flex-column align-items-center justify-content-center"
       style="min-height: 400px"
     >
-    <h3 class="display-3 font-weight-bold text-white">
-          Blog
-  </h3>
+    <h3 class="display-3 font-weight-bold text-white">{{ $getcategory->title }}</h3>
   
   <div class="d-inline-flex text-white">
-      <p class="m-0"><a class="text-white" href="/">Home</a></p>
+      <p class="m-0"><a class="text-white" href="{{ route('home') }}">Home</a></p>
       <p class="m-0 px-2">/</p>
-      <p class="m-0">
-              Blog
-      </p>
+      <p class="m-0">{{ $getcategory->title }}</p>
   </div>
     </div>
   </div>
@@ -38,7 +37,7 @@
                   <small class="mr-3"
                     ><i class="fa fa-folder text-primary"></i> 
                     @foreach ($item->categories as $item2)
-                        {{ $item2->name }},
+                      <a href="{{ route('categoryblog',$item2->name) }}"> {{ $item2->name }},</a>
                     @endforeach
                     </small
                   >

@@ -16,11 +16,11 @@
       </button>
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
           <div class="navbar-nav font-weight-bold mx-auto py-0">
-              <a href="/" class="nav-item nav-link active">Home</a>
+              <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'home' ? 'active' : '' }} ">Home</a>
               @foreach ($getcategoryheader as $item)
-                  <a href="{{ route('categoryblog',$item->slug) }}" class="nav-item nav-link">{{ $item->name }}</a>
+                  <a href="{{ route('categoryblog',$item->slug) }}" class="nav-item nav-link {{ Route::currentRouteName() == 'categoryblog' && request()->slug == $item->slug ? 'active' : '' }}">{{ $item->name }}</a>
               @endforeach
-              <a href="{{ route('blog') }}" class="nav-item nav-link">Blog</a>
+              <a href="{{ route('blog') }}" class="nav-item nav-link {{ Route::currentRouteName() == 'blog' ? 'active' : '' }}">Blog</a>
               {{-- <div class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                   <div class="dropdown-menu rounded-0 m-0">

@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>KidKinder - Kindergarten Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Free HTML Templates" name="keywords" />
-    <meta content="Free HTML Templates" name="description" />
-
+    <title>@yield('title', 'Default Title')</title>
+    <meta content="@yield('meta_keywords', 'default, keywords, here')" name="keywords" />
+    <meta content="@yield('meta_description', 'Default meta description for the website.')" name="description" />
+    <link rel="canonical" href="{{ url()->current() }}" />
     <!-- Favicon -->
     <link href="{{ asset('assets/img/favicon.ico') }}" rel="icon" />
 

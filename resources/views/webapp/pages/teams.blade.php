@@ -1,4 +1,7 @@
 @extends('webapp.layout.app')
+@section('title','this is teams page')
+@section('meta_keywords','this is teams  keywords')
+@section('meta_description','sadh sagdvash  asdvagshgd ashdvgas')
 @section('content')
 <main>
      <!-- Header Start -->
